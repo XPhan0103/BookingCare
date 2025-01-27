@@ -31,9 +31,9 @@ let postCRUD = async (req, res) => {
 
 let getCRUD = async (req, res) => {
     let data = await CRUDService.getAllUsers();
-    console.log('--------------------------------');
-    console.log(data);
-    console.log('--------------------------------');
+    // console.log('--------------------------------');
+    // console.log(data);
+    // console.log('--------------------------------');
 
     return res.render('displayCRUD.ejs', {
         dataTable: data //truyen bien sang file view
@@ -65,6 +65,15 @@ let putCRUD = async (req, res) => {
     })
 }
 
+let deleteCRUD = async (req, res) => {
+    let userID = req.query.id;
+    if (!userID) {
+        return res.send('User not found!');
+    }
+    await CRUDService.deleteUserByID(userID);
+    return res.send('User deleted successfully!');
+}
+
 // object: {
 //     key: ''
 //     value: ''
@@ -77,4 +86,5 @@ module.exports = {
     getCRUD: getCRUD,
     editCRUD: editCRUD,
     putCRUD: putCRUD,
+    deleteCRUD: deleteCRUD,
 }
