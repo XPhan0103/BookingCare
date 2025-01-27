@@ -10,6 +10,9 @@ let initWebRoutes = (app) => {
     router.get('/crud', homeController.getCRUDPage);
     router.post('/post-crud', homeController.postCRUD);
     router.get('/get-crud', homeController.getCRUD);
+    router.get('/edit-crud', homeController.editCRUD);
+    router.post('/put-crud', homeController.putCRUD);
+
 
 
     //rest api
